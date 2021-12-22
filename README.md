@@ -1,4 +1,20 @@
-# Overview
+# Concurrency Webserver
+
+This assignment was completed for CS 360 operating systems, and was borrowed from
+[Remzi Arpacidusseau's ostep-projects Repository](https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-webserver).
+
+The goal was to take a single-threaded web server and convert it to a multi-threaded web server
+using locks and condition variable signaling. This was accomplished by creating producer and consumer
+threads (the main thread being the producer). The producer adds HTTP requests to the buffer using a 
+put() method, and the consumer removes requests from the buffer using a get() method. Each method
+uses signaling to notify threads of the status of the buffer, which wakes sleeping threads or
+puts running threads to sleep based on the status of the condition variables used for buffer signaling.
+Locks are placed around the critical section (modification of the shared resource buffer) to prevent 
+race conditions and dropped HTTP requests.
+
+
+
+-------- Standard assignment guidelines below --------
 
 In this assignment, you will be developing a concurrent web server. To
 simplify this project, we are providing you with the code for a non-concurrent
