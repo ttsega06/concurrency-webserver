@@ -1,0 +1,4 @@
+#!/bin/bash
+base=~/CS360/Assignments/Assignment3/concurrency-webserver/p4a
+python2.7 $base/test_p4a.py --test-path $base $@ | tee -i runtests.log
+exit $?
